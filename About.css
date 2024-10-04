@@ -1,0 +1,74 @@
+/* Custom Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar */
+.navbar {
+    background-color: rgba(119, 48, 48, 0.5); /* Warna merah dengan transparansi */
+}
+
+.navbar .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+    color: rgb(108, 71, 71);
+    margin-right: 15px;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ffdddd; /* Warna link saat di hover */
+}
+
+.btn-primary {
+    background-color: rgba(119, 48, 48, 0.8);
+    border-color: rgba(119, 48, 48, 0.8);
+}
+
+.btn-primary:hover {
+    background-color: rgba(119, 48, 48, 1);
+    border-color: rgba(119, 48, 48, 1);
+}
+
+.hero-section {
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+    position: relative;
+    color: rgb(150, 76, 76);
+    overflow: hidden;
+  }
+  
+
+  
+/* About Us Section */
+.about-us-section {
+    background-color: #f5f5f5;
+    padding: 60px 0;
+}
+
+.about-us-section h2 {
+    color: rgba(119, 48, 48, 1);
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.about-us-section p {
+    color: rgba(119, 48, 48, 1);
+    line-height: 1.8;
+}
+
+.about-us-section img {
+    max-width: 100%;
+    height: auto;
+}
+
+.about-us-section h4 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 20px;
+}
