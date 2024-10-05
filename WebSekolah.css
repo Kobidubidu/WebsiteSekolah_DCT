@@ -46,6 +46,17 @@ body {
   padding: 0.8rem 2rem;
 }
 
+
+.btn-primary {
+  background-color: rgba(119, 48, 48, 0.8);
+  border-color: rgba(119, 48, 48, 0.8);
+}
+
+.btn-primary:hover {
+  background-color: rgba(119, 48, 48, 1);
+  border-color: rgba(119, 48, 48, 1);
+}
+
 .card-container {
   display: flex;
   justify-content: center;
