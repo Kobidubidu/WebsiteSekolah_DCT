@@ -7,26 +7,26 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Link to external CSS -->
-    <link rel="stylesheet" href="WebSekolah.css">
+    <link rel="stylesheet" href="..\WebsiteSekolah_DCT\assets\css\index.css">
 </head>
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light py-3 sticky-top">
         <div class="container">
-            <img src="Logo brand.png" alt="Logo DKV SMKN 3 Bandung" width="100" height="100">
+            <img src="..\WebsiteSekolah_DCT\assets\images\Logo brand.png" alt="Logo DKV SMKN 3 Bandung" width="100" height="100">
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="WebSekolah.html">Featured</a></li>
-                    <li class="nav-item"><a class="nav-link" href="About.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="..\WebsiteSekolah_DCT\index.php">Featured</a></li>
+                    <li class="nav-item"><a class="nav-link" href="..\WebsiteSekolah_DCT\pages\About.php">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact_us.html">Contact Us</a></li>
                     <li class="nav-item"><a class="nav-link" href="EventDKV.html">Event DKV</a></li>
                     <li class="nav-item"><a class="nav-link" href="PortofolioSiswa.html">Portofolio Siswa</a></li>
                 </ul>
-                <a href="login.html" class="btn btn-primary ms-3">Login</a>
+                <a href="..\WebsiteSekolah_DCT\pages\login.php" class="btn btn-primary ms-3">Login</a>
             </div>
         </div>
     </nav>
