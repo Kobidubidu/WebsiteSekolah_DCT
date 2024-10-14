@@ -13,7 +13,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light py-3 sticky-top">
         <div class="container">
-            <img src="..\WebsiteSekolah_DCT\assets\images\Logo brand.png" alt="Logo DKV SMKN 3 Bandung" width="100" height="100">
+            <img src="..\WebsiteSekolah_DCT\assets\images\Logobrand.png" alt="Logo DKV SMKN 3 Bandung" width="100" height="100">
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -24,7 +24,7 @@
                     <li class="nav-item"><a class="nav-link" href="..\WebsiteSekolah_DCT\pages\About.php">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact_us.html">Contact Us</a></li>
                     <li class="nav-item"><a class="nav-link" href="EventDKV.html">Event DKV</a></li>
-                    <li class="nav-item"><a class="nav-link" href="PortofolioSiswa.html">Portofolio Siswa</a></li>
+                    <li class="nav-item"><a class="nav-link" href="..\WebsiteSekolah_DCT\pages\portfolio.php">Portofolio Siswa</a></li>
                 </ul>
                 <a href="..\WebsiteSekolah_DCT\pages\login.php" class="btn btn-primary ms-3">Login</a>
             </div>
