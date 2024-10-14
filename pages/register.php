@@ -1,33 +1,3 @@
-<?php
-// Memasukkan koneksi database
-include('../includes/db_connect.php');
-
-// Logika register
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $confirm_password = $_POST['confirm_password'];
-
-    // Validasi
-    if ($password !== $confirm_password) {
-        $error = "Password tidak cocok.";
-    } else {
-        // Hash password
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-        // Insert user baru ke database
-        $sql = "INSERT INTO users (email, password) VALUES ('$email', '$hashed_password')";
-        
-        if ($conn->query($sql) === TRUE) {
-            header("Location: login.php"); // Redirect ke login setelah sukses daftar
-            exit();
-        } else {
-            $error = "Terjadi kesalahan: " . $conn->error;
-        }
-    }
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,23 +8,48 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
     <div class="register-container">
-        <h2>Daftar ke DKV SMKN 3</h2>
-        <?php if (isset($error)): ?>
-            <p class="error"><?= $error; ?></p>
-        <?php endif; ?>
-        <form method="POST" action="">
+        <h2>Register ke Jurusan DKV SMKN 3</h2>
+        <form action="../actions/register_process.php" method="POST">
+            <label for="name">Nama:</label>
+            <input type="text" name="name" required>
+
             <label for="email">Email:</label>
             <input type="email" name="email" required>
 
-            <label for="password">Password:</label>
-            <input type="password" name="password" required>
+            <label for="role">Daftar sebagai:</label>
+            <select name="role" id="role" onchange="toggleFields()" required>
+                <option value="user">Siswa</option>
+                <option value="admin">Admin</option>
+            </select>
 
-            <label for="confirm_password">Konfirmasi Password:</label>
-            <input type="password" name="confirm_password" required>
+            <div id="user-fields">
+                <label for="nisn">NISN:</label>
+                <input type="text" name="nisn">
+            </div>
 
-            <button type="submit">Daftar</button>
+            <div id="admin-fields" style="display: none;">
+                <label for="pin_code">PIN Code (untuk admin):</label>
+                <input type="password" name="pin_code">
+            </div>
+
+            <button type="submit">Register</button>
         </form>
-        <p>Sudah punya akun? <a href="login.php">Login disini</a></p>
     </div>
+
+    <script>
+        function toggleFields() {
+            var role = document.getElementById("role").value;
+            var userFields = document.getElementById("user-fields");
+            var adminFields = document.getElementById("admin-fields");
+            
+            if (role === "user") {
+                userFields.style.display = "block";
+                adminFields.style.display = "none";
+            } else {
+                userFields.style.display = "none";
+                adminFields.style.display = "block";
+            }
+        }
+    </script>
 </body>
 </html>
