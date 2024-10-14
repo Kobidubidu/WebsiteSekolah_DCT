@@ -1,52 +1,3 @@
-<?php
-// Memasukkan koneksi database
-include('../includes/db_connect.php');
-
-// Memulai session
-session_start();
-
-// Cek apakah user sudah login
-if (isset($_SESSION['user_id'])) {
-    header("Location: index.html"); // Jika sudah login, redirect ke dashboard\
-    
-    exit();
-}
-
-// Logika login
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-
-    // Sanitasi input
-    $email = $conn->real_escape_string($email);
-    $password = $conn->real_escape_string($password);
-
-    // Query untuk mengecek user
-    $sql = "SELECT * FROM users WHERE email = '$email'";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        // Ambil data user
-        $user = $result->fetch_assoc();
-        
-        // Verifikasi password
-        if (password_verify($password, $user['password'])) {
-            // Simpan session
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['email'] = $user['email'];
-
-            // Redirect ke dashboard
-            header("Location: dashboard.php");
-            exit();
-        } else {
-            $error = "Password salah.";
-        }
-    } else {
-        $error = "Email tidak ditemukan.";
-    }
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,20 +8,49 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
     <div class="login-container">
-        <h2>Login ke DKV SMKN 3</h2>
-        <?php if (isset($error)): ?>
-            <p class="error"><?= $error; ?></p>
-        <?php endif; ?>
-        <form method="POST" action="">
+        <h2>Login ke Jurusan DKV SMKN 3</h2>
+        <form action="../actions/login_process.php" method="POST">
+            <label for="name">Nama:</label>
+            <input type="text" name="name" required>
+
             <label for="email">Email:</label>
             <input type="email" name="email" required>
 
-            <label for="password">Password:</label>
-            <input type="password" name="password" required>
+            <label for="role">Login sebagai:</label>
+            <select name="role" id="role" onchange="toggleFields()" required>
+                <option value="user">Siswa</option>
+                <option value="admin">Admin</option>
+            </select>
+
+            <div id="user-fields">
+                <label for="nisn">NISN:</label>
+                <input type="text" name="nisn">
+            </div>
+
+            <div id="admin-fields" style="display: none;">
+                <label for="pin_code">PIN Code (untuk admin):</label>
+                <input type="password" name="pin_code">
+            </div>
 
             <button type="submit">Login</button>
         </form>
-        <p>Belum punya akun? <a href="register.php">Daftar disini</a></p>
+        <a href="..\pages\register.php">Daftar</a>
     </div>
+
+    <script>
+        function toggleFields() {
+            var role = document.getElementById("role").value;
+            var userFields = document.getElementById("user-fields");
+            var adminFields = document.getElementById("admin-fields");
+            
+            if (role === "user") {
+                userFields.style.display = "block";
+                adminFields.style.display = "none";
+            } else {
+                userFields.style.display = "none";
+                adminFields.style.display = "block";
+            }
+        }
+    </script>
 </body>
 </html>
