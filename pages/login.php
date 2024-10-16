@@ -4,9 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - DKV SMKN 3</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="">
 </head>
 <body>
+    <?php
+    include '../includes/header.php';
+    ?>
+
     <div class="login-container">
         <h2>Login ke Jurusan DKV SMKN 3</h2>
         <form action="../actions/login_process.php" method="POST">
