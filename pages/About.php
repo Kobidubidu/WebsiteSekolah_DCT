@@ -31,13 +31,13 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="WebSekolah.html">Featured</a></li>
+                    <li class="nav-item"><a class="nav-link" href="..\index.php">Featured</a></li>
                     <li class="nav-item"><a class="nav-link" href="..\pages\About.php">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact_us.html">Contact Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="EventDKV.html">Event DKV</a></li>
-                    <li class="nav-item"><a class="nav-link" href="PortofolioSiswa.html">Portofolio Siswa</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.php">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="eventdkv.php">Event DKV</a></li>
+                    <li class="nav-item"><a class="nav-link" href="portfolio.php">Portofolio Siswa</a></li>
                 </ul>
-                <a href="login.html" class="btn btn-primary ms-3">Login</a>
+                <a href="login.php" class="btn btn-primary ms-3">Login</a>
             </div>
         </div>
     </nav>
