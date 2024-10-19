@@ -11,7 +11,7 @@ session_start();
 </head>
 <body>
     <?php
-    include '../includes/header.php';
+    include 'includes/header.php';
     ?>
 
     <div class="login-container">

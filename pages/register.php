@@ -9,7 +9,7 @@
 <body>
     <div class="register-container">
         <h2>Register ke Jurusan DKV SMKN 3</h2>
-        <form action="../actions/register_process.php" method="POST">
+        <form action="actions/register_process.php" method="POST">
             <label for="name">Nama:</label>
             <input type="text" name="name" required>
 

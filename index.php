@@ -107,7 +107,7 @@ session_start();
         <p>Lorem ipsum dolor sit amet consectetur. Id nulla cras amet amet. Morbi convallis eu volutpat risus eget facilisis sodales enim.</p>
         <p>Duis blandit amet ultricies quis non mattis vulputate. Ut interdum integer viverra nisl ullamcorper leo nisi tellus nisi.</p>
         <div class="school-head-profile mt-4">
-            <img src="C:\Users\A2_2118\Downloads\pak ismail.jpg" alt="Kepala Sekolah" class="rounded-circle">
+            <img src="pak ismail.jpg" alt="Kepala Sekolah" class="rounded-circle">
             <h4 class="mt-3">Mohamad Ismail</h4>
         </div>
     </div>

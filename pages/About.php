@@ -54,7 +54,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <img src="..\assets\images\Indonesia map.png" class="img-fluid" alt="Map">
+                    <img src="assets/images/Indonesia map.png" class="img-fluid" alt="Map">
                 </div>
                 <div class="col-md-6">
                     <h2>Lokasi</h2>
