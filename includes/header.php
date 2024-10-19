@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,24 +12,38 @@
     <link rel="stylesheet" href="..\assets\css\About.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light py-3 sticky-top" style="background-color: rgba(119, 48, 48, 0.5);">
-        <div class="container">
-            <img src="..\assets\images\Logobrand.png" alt="Logo DKV SMKN 3 Bandung" width="100" height="100">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="../index.php">Featured</a></li>
-                    <li class="nav-item"><a class="nav-link" href="..\pages\About.php">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.php">Contact Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="eventdkv.php">Event DKV</a></li>
-                    <li class="nav-item"><a class="nav-link" href="portfolio.php">Portofolio Siswa</a></li>
-                </ul>
-                <a href="login.php" class="btn btn-primary ms-3">Login</a>
-            </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light py-3 sticky-top" style="background-color: rgba(119, 48, 48, 0.5);">
+    <div class="container">
+        <img src="..\assets\images\Logobrand.png" alt="Logo DKV SMKN 3 Bandung" width="100" height="100">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="..\index.php">Featured</a></li>
+                <li class="nav-item"><a class="nav-link" href="..\pages\About.php">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="..\pages\contact.php">Contact Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="..\pages\eventdkv.php">Event DKV</a></li>
+                <li class="nav-item"><a class="nav-link" href="..\pages\portfolio.php">Portofolio Siswa</a></li>
+            </ul>
+            <?php
+            if(isset($_SESSION['username'])) {
+                echo '<div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                            ' . htmlspecialchars($_SESSION['username']) . '
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item" href="profile.php">Profile</a></li>
+                            <li><a class="dropdown-item" href="../actions/logout.php">Logout</a></li>
+                        </ul>
+                      </div>';
+            } else {
+                echo '<a href="login.php" class="btn btn-primary ms-3">Login</a>';
+            }
+            ?>
         </div>
-    </nav>
+    </div>
+</nav>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
