@@ -22,25 +22,9 @@
     </style>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light py-3 sticky-top" style="background-color: rgba(119, 48, 48, 0.5);">
-        <div class="container">
-            <img src="..\assets\images\Logobrand.png" alt="Logo DKV SMKN 3 Bandung" width="100" height="100">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="..\index.php">Featured</a></li>
-                    <li class="nav-item"><a class="nav-link" href="..\pages\About.php">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.php">Contact Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="eventdkv.php">Event DKV</a></li>
-                    <li class="nav-item"><a class="nav-link" href="portfolio.php">Portofolio Siswa</a></li>
-                </ul>
-                <a href="login.php" class="btn btn-primary ms-3">Login</a>
-            </div>
-        </div>
-    </nav>
+<?php
+    include '../includes/header.php';
+    ?>
 
     <div class="container-fluid">
         <div class="row">
