@@ -17,6 +17,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Query untuk admin
         $sql = "SELECT * FROM admin WHERE email = '$email' AND name = '$name' AND pin_code = '$pin_code'";
+    } else {
+        echo "Role tidak valid.";
+        exit();
     }
 
     $result = mysqli_query($conn, $sql);
@@ -26,12 +29,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         // Simpan session pengguna
         $_SESSION['username'] = $user['name'];
+        $_SESSION['role'] = $role;
 
+        // Simpan user_id ke session
         if ($role == 'user') {
-            $_SESSION['role'] = 'user';
+            $_SESSION['user_id'] = $user['id']; // Pastikan kolom 'id' ada di tabel 'users'
             header("Location: ../pages/dashboard.php"); // Redirect ke dashboard siswa
         } else if ($role == 'admin') {
-            $_SESSION['role'] = 'admin';
+            $_SESSION['user_id'] = $user['id']; // Pastikan kolom 'id' ada di tabel 'admin'
             header("Location: ../pages/admin_dashboard.php"); // Redirect ke dashboard admin
         }
         exit();
