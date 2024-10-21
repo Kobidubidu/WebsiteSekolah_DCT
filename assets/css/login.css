@@ -1,5 +1,5 @@
 body {
-    background-color: #300f05; /* Warna latar belakang */
+    background-color: #651b05; /* Warna latar belakang */
 }
 
 .card {
@@ -7,16 +7,16 @@ body {
 }
 
 .card-title {
-    color: #ffcc00; /* Warna judul */
+    color: #ff3e3e; /* Warna judul */
 }
 
 .btn-warning {
-    background-color: #ffcc00; /* Warna tombol */
+    background-color: #ff3e3e; /* Warna tombol */
     border: none; /* Menghilangkan border pada tombol */
 }
 
 .btn-warning:hover {
-    background-color: #e6b800; /* Warna tombol saat hover */
+    background-color: #ff3e3e; /* Warna tombol saat hover */
 }
 
 .text-light {
