@@ -1,0 +1,56 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.navbar-brand img {
+    height: 40px;
+}
+
+.navbar-nav .nav-link {
+    color: #333;
+    font-weight: 500;
+}
+
+.navbar-nav .btn {
+    background-color: #007bff;
+    color: white;
+}
+
+.login-section {
+    background-color: #0B507C;
+    color: white;
+    min-height: 80vh;
+}
+
+.card {
+    background-color: #fff;
+    border: none;
+    border-radius: 10px;
+}
+
+.form-label {
+    font-weight: 600;
+}
+
+.user-icon {
+    text-align: center;
+}
+
+.user-icon svg {
+    color: #FFC107;
+}
+
+.footer {
+    background-image: url('background-image.png'); /* Add the background image path */
+    background-size: cover;
+    color: #333;
+}
+
+.footer .social-icons img {
+    width: 24px;
+    margin-right: 10px;
+}
+
+.footer a {
+    color: #007bff;
+}
