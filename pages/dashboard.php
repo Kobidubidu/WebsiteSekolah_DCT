@@ -20,5 +20,8 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'user') {
     <p>Ini adalah dashboard siswa.</p>
     <a href="../pages/upload_portfolio.php">upload</a>
     <a href="../actions/logout.php">Logout</a>
+    <?php
+    include  '../includes/footer.php';
+    ?>
 </body>
 </html>
