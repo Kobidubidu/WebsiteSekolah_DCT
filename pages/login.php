@@ -11,7 +11,7 @@ session_start();
     <link rel="stylesheet" href="../assets/css/login.css">
 </head>
 <body class="bg-dark text-light">
-    <?php include 'includes/header.php'; ?>
+    <?php include '../includes/header.php'; ?>
 
     <div class="container d-flex justify-content-center align-items-center min-vh-100">
         <div class="card" style="width: 30rem; background-color: #300f05;">
