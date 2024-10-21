@@ -1,56 +1,28 @@
 body {
-    font-family: Arial, sans-serif;
-}
-
-.navbar-brand img {
-    height: 40px;
-}
-
-.navbar-nav .nav-link {
-    color: #333;
-    font-weight: 500;
-}
-
-.navbar-nav .btn {
-    background-color: #007bff;
-    color: white;
-}
-
-.login-section {
-    background-color: #0B507C;
-    color: white;
-    min-height: 80vh;
+    background-color: #300f05; /* Warna latar belakang */
 }
 
 .card {
-    background-color: #fff;
-    border: none;
-    border-radius: 10px;
+    border: none; /* Menghilangkan border pada kartu */
 }
 
-.form-label {
-    font-weight: 600;
+.card-title {
+    color: #ffcc00; /* Warna judul */
 }
 
-.user-icon {
-    text-align: center;
+.btn-warning {
+    background-color: #ffcc00; /* Warna tombol */
+    border: none; /* Menghilangkan border pada tombol */
 }
 
-.user-icon svg {
-    color: #FFC107;
+.btn-warning:hover {
+    background-color: #e6b800; /* Warna tombol saat hover */
 }
 
-.footer {
-    background-image: url('background-image.png'); /* Add the background image path */
-    background-size: cover;
-    color: #333;
+.text-light {
+    color: #ffffff; /* Warna teks untuk link */
 }
 
-.footer .social-icons img {
-    width: 24px;
-    margin-right: 10px;
-}
-
-.footer a {
-    color: #007bff;
+.text-light:hover {
+    text-decoration: underline; /* Menambahkan garis bawah pada hover */
 }
