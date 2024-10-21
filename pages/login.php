@@ -68,5 +68,8 @@ session_start();
             }
         }
     </script>
+    <?php
+    include  '../includes/footer.php';
+    ?>
 </body>
 </html>

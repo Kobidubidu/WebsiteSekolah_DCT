@@ -1,0 +1,27 @@
+.footer .container {
+    max-width: 960px;
+  }
+  
+  .footer ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer li {
+    margin-bottom: 10px;
+  }
+  
+  .footer a {
+    color: #333;
+  }
+  
+  .footer a:hover {
+    color: #007bff;
+  }
+  
+  .footer .social-icons a {
+    display: inline-block;
+    margin-right: 20px;
+    font-size: 24px;
+    color: #333;
+  }

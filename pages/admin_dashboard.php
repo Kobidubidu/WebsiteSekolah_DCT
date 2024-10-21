@@ -22,5 +22,8 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
     <h1>Selamat datang, <?php echo $_SESSION['username']; ?> (Admin)</h1>
     <p>Ini adalah dashboard admin.</p>
     <a href="../actions/logout.php">Logout</a>
+    <?php
+    include  '../includes/footer.php';
+    ?>
 </body>
 </html>
