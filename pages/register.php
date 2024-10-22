@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
+    <?php
+    include '../includes/header.php';
+    ?>
     <div class="register-container">
         <h2>Register ke Jurusan DKV SMKN 3</h2>
         <form action="../actions/register_process.php" method="POST">
