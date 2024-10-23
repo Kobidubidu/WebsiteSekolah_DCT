@@ -27,19 +27,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user = mysqli_fetch_assoc($result);
         
         if (isset($user['id'])) {
-            // Menyimpan ID pengguna ke dalam sesi
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['username'] = $user['name'];
-            $_SESSION['role'] = $role;
 
             // Ambil session_id dari database
             $session_id = $user['session_id']; // Pastikan kolom 'session_id' ada dalam tabel 'users' dan 'admin'
             $_SESSION['session_id'] = $session_id; // Simpan session_id ke dalam sesi
+            
+            // Menyimpan ID pengguna ke dalam sesi
+            $_SESSION['user_id'] = $user['id']; // Store the user's ID from the database
+            $_SESSION['username'] = $user['name']; // Store the user's name
+            $_SESSION['role'] = $role; // Store the user's role
+
+            
 
             // Debugging: Cek nilai sesi
-            var_dump($_SESSION['user_id']);
-            var_dump($_SESSION['role']);
-            var_dump($_SESSION['session_id']); // Menampilkan session_id yang diambil dari database
+            var_dump($_SESSION['user_id']); // This should show the user's ID
+            var_dump($_SESSION['role']); // This should show the user's role
+            var_dump($_SESSION['session_id']); // This should show the session ID from the database
         }
 
         // Redirect berdasarkan peran pengguna

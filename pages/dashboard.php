@@ -8,7 +8,6 @@
 <body>
 <?php
 include '../includes/header.php';
-session_start();
 
 // Cek apakah pengguna sudah login dan apakah rolenya adalah user
 if (!isset($_SESSION['role']) || $_SESSION['role'] != 'user') {
