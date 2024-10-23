@@ -1,28 +1,107 @@
+/* General body and card styles */
 body {
-    background-color: #651b05; /* Warna latar belakang */
+  background-image: url("../WebsiteSekolah_DCT/assets/images/bg-login.jpg"); /* Masukkan gambar background */
+  font-family: "Arial", sans-serif;
+  background-color: #343a40; /* Dark background */
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  height: 100vh;
 }
 
 .card {
-    border: none; /* Menghilangkan border pada kartu */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.9
+  ); /* Semi-transparent white background */
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
 }
 
+.card-body {
+  position: relative;
+  z-index: 2;
+}
+
+/* Logo styling */
+.logo {
+  display: block;
+  margin: 0 auto;
+  max-width: 80px; /* Mengubah ukuran logo menjadi lebih kecil */
+  height: auto; /* Menjaga proporsi logo */
+  margin-bottom: 20px;
+}
+
+/* Form control styles */
+.form-control {
+  background-color: #f2f2f2; /* Light grey background for input fields */
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  color: #343a40; /* Dark text for labels */
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Button styles */
+.btn {
+  background-color: #a93d36; /* Dark red color for button */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  width: 100%;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #c44d44; /* Slightly lighter red on hover */
+}
+
+/* Role-based fields */
+#admin-fields,
+#user-fields {
+  transition: all 0.3s ease;
+  display: none; /* Hide user/admin fields initially */
+}
+
+#admin-fields.active,
+#user-fields.active {
+  display: block; /* Show active role fields */
+}
+
+/* For the card title */
 .card-title {
-    color: #ff3e3e; /* Warna judul */
+  font-size: 24px;
+  font-weight: bold;
+  color: #343a40; /* Dark text for title */
 }
 
-.btn-warning {
-    background-color: #ff3e3e; /* Warna tombol */
-    border: none; /* Menghilangkan border pada tombol */
+/* Mobile responsive design */
+@media only screen and (max-width: 768px) {
+  .card {
+    width: 100%;
+    margin: 20px;
+  }
 }
 
-.btn-warning:hover {
-    background-color: #ff3e3e; /* Warna tombol saat hover */
-}
-
-.text-light {
-    color: #ffffff; /* Warna teks untuk link */
-}
-
-.text-light:hover {
-    text-decoration: underline; /* Menambahkan garis bawah pada hover */
+@media only screen and (max-width: 576px) {
+  .card {
+    width: 90%;
+    margin: 20px auto;
+  }
 }

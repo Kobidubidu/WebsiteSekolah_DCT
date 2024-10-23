@@ -1,6 +1,6 @@
 <?php
-session_start();
 include '../includes/db_connect.php';
+
 
 $sql = "SELECT * FROM events ORDER BY created_at DESC";
 $result = $conn->query($sql);

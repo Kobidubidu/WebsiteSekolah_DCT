@@ -22,29 +22,35 @@ session_start();
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="index.php">Featured</a></li>
-                <li class="nav-item"><a class="nav-link" href="..\WebsiteSekolah_DCT\pages\About.php">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="..\WebsiteSekolah_DCT\pages\contactus.php">Contact Us</a></li>
-                <li class="nav-item"><a class="nav-link" href="..\WebsiteSekolah_DCT\pages\eventdkv.php">Event DKV</a></li>
-                <li class="nav-item"><a class="nav-link" href="..\WebsiteSekolah_DCT\pages\portfolio.php">Portofolio Siswa</a></li>
+                <?php if (isset($_SESSION['user_id'])): ?>
+                    <?php if ($_SESSION['role'] == 'admin'): ?>
+                        <li class="nav-item"><a class="nav-link" href="../WebsiteSekolah_DCT/pages/admin_dashboard.php">Dashboard Admin</a></li>
+                    <?php elseif ($_SESSION['role'] == 'user'): ?>
+                        <li class="nav-item"><a class="nav-link" href="../WebsiteSekolah_DCT/pages/dashboard.php">Dashboard Siswa</a></li>
+                    <?php endif; ?>
+                <?php endif; ?>
+                <li class="nav-item"><a class="nav-link" href="..\WebsiteSekolah_DCT\index.php">Featured</a></li>
+                <li class="nav-item"><a class="nav-link" href="../WebsiteSekolah_DCT\pages\About.php">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="../WebsiteSekolah_DCT\pages\contact.php">Contact Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="../WebsiteSekolah_DCT\pages\eventdkv.php">Event DKV</a></li>
+                <li class="nav-item"><a class="nav-link" href="../WebsiteSekolah_DCT\pages\portfolio.php">Portofolio Siswa</a></li>
             </ul>
-            <?php
-            if(isset($_SESSION['username'])) {
-                echo '<div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                            ' . htmlspecialchars($_SESSION['username']) . '
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <li><a class="dropdown-item" href="profile.php">Profile</a></li>
-                            <li><a class="dropdown-item" href="../WebsiteSekolah_DCT/actions/logout.php">Logout</a></li>
-                        </ul>
-                      </div>';
-            } else {
-                echo '<a href="pages/login.php" class="btn btn-primary ms-3">Login</a>';
-            }
-            ?>
+            <?php if (isset($_SESSION['username'])): ?>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        <?php echo htmlspecialchars($_SESSION['username']); ?>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item" href="profile.php">Profile</a></li>
+                        <li><a class="dropdown-item" href="../WebsiteSekolah_DCT/actions/logout.php">Logout</a></li>
+                    </ul>
+                </div>
+            <?php else: ?>
+                <a href="../WebsiteSekolah_DCT/pages/login.php" class="btn btn-primary ms-3">Login</a>
+            <?php endif; ?>
         </div>
     </div>
+</nav>
 </nav>
 
     <!-- Hero Section -->

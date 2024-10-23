@@ -26,18 +26,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result && mysqli_num_rows($result) > 0) {
         $user = mysqli_fetch_assoc($result);
         
-        // Save user information in session
-        $_SESSION['username'] = $user['name'];
-        $_SESSION['role'] = $role;
+        if (isset($user['id'])) {
+            // Menyimpan ID pengguna ke dalam sesi
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['username'] = $user['name'];
+            $_SESSION['role'] = $role;
 
-        // Save user_id to session
-        $_SESSION['user_id'] = $user['id']; // Ensure 'id' exists in both tables
+            // Ambil session_id dari database
+            $session_id = $user['session_id']; // Pastikan kolom 'session_id' ada dalam tabel 'users' dan 'admin'
+            $_SESSION['session_id'] = $session_id; // Simpan session_id ke dalam sesi
 
-        // Redirect based on user role
+            // Debugging: Cek nilai sesi
+            var_dump($_SESSION['user_id']);
+            var_dump($_SESSION['role']);
+            var_dump($_SESSION['session_id']); // Menampilkan session_id yang diambil dari database
+        }
+
+        // Redirect berdasarkan peran pengguna
         if ($role == 'user') {
-            header("Location: ../pages/dashboard.php"); // Redirect to student dashboard
+            header("Location: ../pages/dashboard.php"); // Redirect ke dashboard siswa
         } else if ($role == 'admin') {
-            header("Location: ../pages/admin_dashboard.php"); // Redirect to admin dashboard
+            header("Location: ../pages/admin_dashboard.php"); // Redirect ke dashboard admin
         }
         exit();
     } else {

@@ -1,4 +1,4 @@
-* Custom Styles */
+/* Custom Styles */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -13,6 +13,7 @@ body {
     48,
     0.5
   ); /* Warna merah dengan transparansi */
+  z-index: 1000; /* Pastikan dropdown berada di atas elemen lainnya */
 }
 
 .navbar .navbar-brand {
@@ -29,6 +30,30 @@ body {
   color: #ffdddd; /* Warna link saat di hover */
 }
 
+/* Dropdown button styling */
+.dropdown-toggle::after {
+  margin-left: 0.255em;
+  vertical-align: 0.255em;
+  content: "\25BC"; /* Menambahkan simbol panah ke bawah */
+}
+
+/* Pastikan dropdown muncul di atas */
+.dropdown-menu {
+  z-index: 1050; /* Z-index lebih tinggi dari navbar */
+}
+
+/* Pastikan tombol dropdown bisa ditekan */
+.btn-secondary.dropdown-toggle {
+  background-color: rgba(119, 48, 48, 0.8);
+  border-color: rgba(119, 48, 48, 0.8);
+}
+
+.btn-secondary.dropdown-toggle:hover {
+  background-color: rgba(119, 48, 48, 1);
+  border-color: rgba(119, 48, 48, 1);
+}
+
+/* Button styles */
 .btn-primary {
   background-color: rgba(119, 48, 48, 0.8);
   border-color: rgba(119, 48, 48, 0.8);
@@ -37,4 +62,10 @@ body {
 .btn-primary:hover {
   background-color: rgba(119, 48, 48, 1);
   border-color: rgba(119, 48, 48, 1);
+}
+
+.dropdown-menu {
+  display: block !important; /* Untuk sementara, buat dropdown selalu terlihat */
+  visibility: visible !important; /* Pastikan terlihat */
+  position: relative; /* Atur posisi agar tetap dalam konteks */
 }

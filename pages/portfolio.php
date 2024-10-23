@@ -1,5 +1,4 @@
 <?php
-session_start();
 include '../includes/db_connect.php';
 
 // Fungsi untuk mendapatkan semua item galeri
@@ -43,16 +42,16 @@ $gallery_items = getGalleryItems($conn);
         <div class="projects">
             <?php foreach ($gallery_items as $item): ?>
                 <div class="gallery-item">
-                    <img src="<?php echo htmlspecialchars($item['image_path']); ?>" alt="<?php echo htmlspecialchars($item['title']); ?>">
-                    <h3><?php echo htmlspecialchars($item['title']); ?></h3>
-                    <p><?php echo htmlspecialchars($item['description']); ?></p>
-                    <p>Oleh: <?php echo htmlspecialchars($item['user_name']); ?></p>
-                    
-                    <?php if (isset($_SESSION['role']) && ($_SESSION['role'] == 'admin' || ($_SESSION['role'] == 'user' && $_SESSION['user_id'] == $item['user_id']))): ?>
-                        <a href="edit_gallery_item.php?id=<?php echo $item['id']; ?>" class="btn btn-secondary">Edit</a>
-                        <a href="delete_gallery_item.php?id=<?php echo $item['id']; ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus item ini?')">Hapus</a>
-                    <?php endif; ?>
-                </div>
+    <img src="<?php echo htmlspecialchars($item['image_path'] ?? 'default_image_path.jpg'); ?>" alt="<?php echo htmlspecialchars($item['title'] ?? 'Default Title'); ?>">
+    <h3><?php echo htmlspecialchars($item['title'] ?? 'Default Title'); ?></h3>
+    <p><?php echo htmlspecialchars($item['description'] ?? 'No description available.'); ?></p>
+    <p>Oleh: <?php echo htmlspecialchars($item['user_name'] ?? 'Unknown User'); ?></p>
+    
+    <?php if (isset($_SESSION['role']) && ($_SESSION['role'] == 'admin' || ($_SESSION['role'] == 'user' && $_SESSION['user_id'] == $item['user_id']))): ?>
+        <a href="edit_gallery_item.php?id=<?php echo $item['id']; ?>" class="btn btn-secondary">Edit</a>
+        <a href="delete_gallery_item.php?id=<?php echo $item['id']; ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus item ini?')">Hapus</a>
+    <?php endif; ?>
+</div>
             <?php endforeach; ?>
         </div>
     </section>
