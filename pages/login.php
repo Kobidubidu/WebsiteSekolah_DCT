@@ -1,3 +1,8 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,21 +10,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - DKV SMKN 3</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/login.css"> <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="../assets/css/login.css">
+    <style>
+        body {
+            background-image: url("../assets/images/bg-login.png");
+            background-size: cover;
+            background-position: center;
+        }
+        .container {
+            margin-top: 100px; /* Memberikan ruang untuk header */
+        }
+    </style>
+    <script>
+        function toggleFields() {
+            var role = document.getElementById('role').value;
+            var userFields = document.getElementById('user-fields');
+            var adminFields = document.getElementById('admin-fields');
+
+            if (role === 'admin') {
+                userFields.style.display = 'none'; // Sembunyikan NISN
+                adminFields.style.display = 'block'; // Tampilkan PIN
+            } else {
+                userFields.style.display = 'block'; // Tampilkan NISN
+                adminFields.style.display = 'none'; // Sembunyikan PIN
+            }
+        }
+    </script>
 </head>
 <body class="bg-dark text-light">
-    <?php include '../includes/header.php'; ?>
-
     <div class="container d-flex justify-content-center align-items-center min-vh-100">
         <div class="card">
             <div class="card-body">
                 <h2 class="card-title text-center mb-4" style="color: rgba(119, 48, 48, 0.5);">Login ke Jurusan DKV SMKN 3</h2>
                 
-                <!-- Add logo -->
-                <img src="../assets/images/logobrand.png" alt="Logo DKV SMKN 3" class="logo" width='100' height='100'>
+                <img src="../assets/images/logobrand.png" alt="Logo DKV SM KN 3" class="logo" width='100' height='100'>
                 
-                <!-- Form starts here -->
-                <form action="../actions/login_process.php" method="POST" style="color:  rgba(119, 48, 48, 0.5);">
+                <form action="../actions/login_process.php" method="POST" style="color: rgba(119, 48, 48,  0.5);">
                     <div class="form-group">
                         <label for="name">Nama:</label>
                         <input type="text" class="form-control" name="name" required>
@@ -52,32 +78,10 @@
                 </form>
 
                 <div class="text-center mt-3">
-                    <a href="../pages/register.php" class="text-light">Daftar</a>
+                    <a href="../pages/register.php" class="text-dark">Daftar</a>
                 </div>
             </div>
         </div>
     </div>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    
-    <script>
-        function toggleFields() {
-            var role = document.getElementById("role").value;
-            var userFields = document.getElementById("user-fields");
-            var adminFields = document.getElementById("admin-fields");
-            
-            if (role === "user") {
-                userFields.style.display = "block";
-                adminFields.style.display = "none";
-            } else {
-                userFields.style.display = "none";
-                adminFields.style.display = "block";
-            }
-        }
-    </script>
-
-    <?php include '../includes/footer.php'; ?>
 </body>
 </html>

@@ -1,15 +1,12 @@
 /* General body and card styles */
 body {
-  background-image: url("../WebsiteSekolah_DCT/assets/images/bg-login.jpg"); /* Masukkan gambar background */
-  font-family: "Arial", sans-serif;
-  background-color: #343a40; /* Dark background */
-  color: #ffffff;
-  margin: 0;
-  padding: 0;
+  background-image: url("../assets/images/bg-login.jpg"); /* Ganti dengan jalur yang benar */
+  background-size: cover; /* Menutupi seluruh area */
+  background-position: center; /* Memusatkan gambar */
 }
 
 .container {
-  height: 100vh;
+  height: 10vh;
 }
 
 .card {
