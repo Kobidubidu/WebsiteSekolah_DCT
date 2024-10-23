@@ -20,18 +20,18 @@ if (isset($_SESSION['role']) && ($_SESSION['role'] == 'user' || $_SESSION['role'
                 
                 unlink($gallery_item['image_path']);
                 
-                header('Location: portfolio.php');
+                header('Location: ../pages/portfolio.php');
                 exit;
             } else {
-                header('Location: portfolio.php');
+                header('Location: ../pages/portfolio.php');
                 exit;
             }
         } else {
-            header('Location: portfolio.php');
+            header('Location: ../pages/portfolio.php');
             exit;
         }
     } else {
-        header('Location: portfolio.php');
+        header('Location: ../pages/portfolio.php');
         exit;
     }
 } else {

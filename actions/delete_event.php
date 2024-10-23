@@ -3,12 +3,12 @@ session_start();
 include '../includes/db_connect.php';
 
 if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
-    header('Location: eventdkv.php');
+    header('Location: ../pages/eventdkv.php');
     exit();
 }
 
 if (!isset($_GET['id'])) {
-    header('Location: eventdkv.php');
+    header('Location: ../pages/eventdkv.php');
     exit();
 }
 
@@ -18,6 +18,6 @@ $stmt = $conn->prepare($sql);
 $stmt->bind_param('i', $id);
 $stmt->execute();
 
-header('Location: eventdkv.php');
+header('Location: ../pages/eventdkv.php');
 exit();
 ?>

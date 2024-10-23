@@ -15,7 +15,7 @@ if (isset($_SESSION['role']) && ($_SESSION['role'] == 'user' || $_SESSION['role'
 
         $stmt->execute();
         
-        header('Location: portfolio.php');
+        header('Location: ../pages/portfolio.php');
         exit;
     }
 } else {

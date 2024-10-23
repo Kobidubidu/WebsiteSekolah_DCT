@@ -28,15 +28,15 @@ if (isset($_SESSION['role']) && ($_SESSION['role'] == 'user' || $_SESSION['role'
                 $stmt->bind_param("sssi", $title, $description, $image_path, $id);
                 $stmt->execute();
                 
-                header('Location: portfolio.php');
+                header('Location: ../pages/portfolio.php');
                 exit;
             }
         } else {
-            header('Location: portfolio.php');
+            header('Location: ../pages/portfolio.php');
             exit;
         }
     } else {
-        header('Location: portfolio.php');
+        header('Location: ../pages/portfolio.php');
         exit;
     }
 } else {
