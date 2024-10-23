@@ -9,7 +9,7 @@
 <footer class="footer">
     <div class="container">
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-9">
           <h5>FAQs</h5>
           <ul>
             <li><a href="#">Kelebihan dari Sekolah ini</a></li>
@@ -17,7 +17,7 @@
             <li><a href="#">Jumlah Kerjasama dalam Pihak</a></li>
           </ul>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
           <h5>Features</h5>
           <ul>
             <li><a href="#">Videography</a></li>
