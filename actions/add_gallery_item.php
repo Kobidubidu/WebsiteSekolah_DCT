@@ -1,6 +1,7 @@
 <?php
-session_start();
+include '../includes/header.php';
 include '../includes/db_connect.php';
+
 
 if (isset($_SESSION['role']) && ($_SESSION['role'] == 'user' || $_SESSION['role'] == 'admin')) {
     if (isset($_POST['title']) && isset($_POST['description']) && isset($_FILES['image'])) {
@@ -30,7 +31,6 @@ if (isset($_SESSION['role']) && ($_SESSION['role'] == 'user' || $_SESSION['role'
     <!-- ... (head content) ... -->
 </head>
 <body>
-    <?php include '../includes/header.php'; ?>
 
     <section class="hero">
         <h1>Tambah Item Galeri</h1>
