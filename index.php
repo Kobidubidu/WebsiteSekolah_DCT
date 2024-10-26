@@ -107,7 +107,7 @@ session_start();
     </div>
     
     <!-- Welcome Section -->
-<section class="welcome-section text-center py-5">
+<section class="welcome-section text-center py-5" style="color: black;">
     <div class="container">
         <h2 class="welcome-title">Kepala Jurusan DKV</h2>
         <p>Lorem ipsum dolor sit amet consectetur. Id nulla cras amet amet. Morbi convallis eu volutpat risus eget facilisis sodales enim.</p>
@@ -120,43 +120,48 @@ session_start();
 </section>
 
 <!-- Testimonials Section -->
-<section class="testimonials-section py-5">
-    <div class="container">
-        <h3 class="text-center mb-4">Preview Portofolio</h3>
-        <p class="text-center mb-4">Karya Karya siswa DKV SMKN 3 Bandung</p>
-        <div class="row justify-content-center">
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="testimonial-card p-4 shadow-sm rounded">
-                    <p><strong>Street Photography</strong></p>
-                    <img src="https://media.wired.com/photos/59a459d3b345f64511c5e3d4/master/pass/MemeLoveTriangle_297886754.jpg" alt="Profile" class="profile"> <img/>
-                    <p>-</p>
-                    <p class="text-muted">Adhwa<br>-</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="testimonial-card p-4 shadow-sm rounded">
-                    <p><strong>Desain</strong></p>
-                    <img src="https://flat-icons.com/wp-content/uploads/2021/03/Graphic-Design-Is-My-Passion.jpg" alt="Profile" class="profile"> <img/>
-                    <p>-</p>
-                    <p class="text-muted">Albi<br>-</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="testimonial-card p-4 shadow-sm rounded">
-                    <p><strong>videografi</strong></p>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhaAFN1wKm8sW5wwmynAamorZMFbzWxBxeVw&s" alt="Profile" class="profile"> <img/>
-                    <p>-</p>
-                    <p class="text-muted">Faturochman<br>-</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<?php
+include '../WebsiteSekolah_DCT/includes/db_connect.php';
+// Fungsi untuk mendapatkan semua item galeri
+function getGalleryItems($conn, $user_id = null) {
+    $sql = "SELECT g.*, u.name as user_name FROM gallery g LEFT JOIN users u ON g.user_id = u.id";
+    if ($user_id) {
+        $sql .= " WHERE g.user_id = ?";
+    }
+    $sql .= " ORDER BY g.created_at DESC";
+    
+    $stmt = $conn->prepare($sql);
+    if ($user_id) {
+        $stmt->bind_param("i", $user_id);
+    }
+    $stmt->execute();
+    return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+}
 
+// Ambil semua item galeri
+$gallery_items = getGalleryItems($conn);
+?>
+<div class="container">
+    <h2 class="text-center my-4">Galeri Karya Siswa</h2>
+    <div class="row g-4">
+        <?php foreach ($gallery_items as $item): ?>
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <img src="<?php echo htmlspecialchars('../WebsiteSekolah_DCT/uploads/' . $item['image_path'] ?? 'default_image_path.jpg'); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($item['title'] ?? 'Default Title'); ?>">
+                    <div class="card-body">
+                        <h5 class="card-title"><?php echo htmlspecialchars($item['title'] ?? 'Default Title'); ?></h5>
+                        <p class="card-text"><?php echo htmlspecialchars($item['description'] ?? 'No description available.'); ?></p>
+                        <p class="card-text"><small class="text-muted">Oleh: <?php echo htmlspecialchars($item['user_name'] ?? 'Unknown User'); ?></small></p>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>
 <!-- Student Achievements Section -->
-<section class="achievements-section py-5 text-center text-white">
+<section class="achievements-section py-5 text-center" style="color: black;">
     <div class="container">
-        <h4 class="mb-4">hasil perjuangan para siswa setelah kelulusan</h4>
+        <h4 class="mb-4">Hasil perjuangan para siswa setelah kelulusan</h4>
         <div class="row">
             <div class="col-lg-4 col-md-6 mb-4">
                 <h2>99</h2>
@@ -219,6 +224,6 @@ session_start();
     </div>
   </footer>
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
