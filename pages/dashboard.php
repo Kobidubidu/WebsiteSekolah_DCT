@@ -7,7 +7,7 @@
 </head>
 <body>
 <?php
-include '../includes/header.php';
+include_once '../includes/header.php';
 
 // Cek apakah pengguna sudah login dan apakah rolenya adalah user
 if (!isset($_SESSION['role']) || $_SESSION['role'] != 'user') {
