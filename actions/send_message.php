@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_param("sss", $name, $email, $message);
 
         if ($stmt->execute()) {
-            // Jika berhasil, alihkan ke halaman kontak dengan pesan sukses
+            // Jika berahasil, alihkan ke halaman kontak dengan pesan sukses
             header("Location: ../pages/contact.php?status=success");
             exit(); // Pastikan untuk keluar setelah redirect
         } else {

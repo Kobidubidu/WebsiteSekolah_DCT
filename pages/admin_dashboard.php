@@ -14,7 +14,17 @@ include_once '../includes/db_connect.php';
 if ($conn->connect_error) {
     die("Database connection failed: " . $conn->connect_error);
 }
-
+// Handle form submissions for deleting messages
+if (isset($_POST['delete_message'])) {
+    $message_id = $_POST['message_id'];
+    $stmt = $conn->prepare("DELETE FROM messages WHERE id = ?");
+    $stmt->bind_param("i", $message_id);
+    $stmt->execute();
+    $stmt->close();
+}
+// Fetch messages for display
+$result_messages = $conn->query("SELECT * FROM messages ORDER BY created_at DESC");
+$messages = $result_messages->fetch_all(MYSQLI_ASSOC);
 // Handle form submissions for adding, editing, and deleting users and admins
 // Handle form submissions for adding, editing, and deleting users and admins
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -275,6 +285,7 @@ $admins = $result_admins->fetch_all(MYSQLI_ASSOC);
                 <th>Name</th>
                 <th>Email</th>
                 <th>Pin_Code</th>
+                <th>Action</th>
             </tr>
             <?php
             foreach ($admins as $admin) {
@@ -303,6 +314,32 @@ $admins = $result_admins->fetch_all(MYSQLI_ASSOC);
         </table>
     </div>
 </body>
+<h2>Messages from Contact Form</h2>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Message</th>
+        <th>Date</th>
+        <th>Action</th>
+    </tr>
+    <?php foreach ($messages as $message) { ?>
+    <tr>
+        <td><?php echo $message['id']; ?></td>
+        <td><?php echo htmlspecialchars($message['name']); ?></td>
+        <td><?php echo htmlspecialchars($message['email']); ?></td>
+        <td><?php echo htmlspecialchars($message['message']); ?></td>
+        <td><?php echo $message['created_at']; ?></td>
+        <td>
+            <form method="POST" style="display:inline;">
+                <input type="hidden" name="message_id" value="<?php echo $message['id']; ?>">
+                <button type="submit" name="delete_message">Delete</button>
+            </form>
+        </td>
+    </tr>
+    <?php } ?>
+</table>
 </html>
 
 <?php

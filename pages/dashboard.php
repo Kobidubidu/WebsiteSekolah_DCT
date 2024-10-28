@@ -92,5 +92,30 @@ $gallery_result = $gallery_query->get_result();
             <textarea class="form-control" name="description" required></textarea>
         </div>
         <div class="form-group">
-            <label>Gambar:</label>
-            <input type
+        <label>Gambar:</label>
+            <input type="file" class="form-control" name="image" required>
+        </div>
+        <button type="submit" class="btn btn-primary" name="add_gallery">Tambah Karya</button>
+    </form>
+
+    <h2>Galeri Karya Anda</h2>
+    <div class="row">
+        <?php while ($gallery_item = $gallery_result->fetch_assoc()): ?>
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="<?php echo htmlspecialchars($gallery_item['image_path']); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($gallery_item['title']); ?>">
+                    <div class="card-body">
+                        <h5 class="card-title"><?php echo htmlspecialchars($gallery_item['title']); ?></h5>
+                        <p class="card-text"><?php echo htmlspecialchars($gallery_item['description']); ?></p>
+                    </div>
+                </div>
+            </div>
+        <?php endwhile; ?>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

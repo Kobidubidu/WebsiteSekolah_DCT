@@ -76,10 +76,6 @@ error_reporting(E_ALL);
                     
                     <button class="btn btn-danger btn-block" type="submit">Login</button>
                 </form>
-
-                <div class="text-center mt-3">
-                    <a href="../pages/register.php" class="text-dark">Daftar</a>
-                </div>
             </div>
         </div>
     </div>
