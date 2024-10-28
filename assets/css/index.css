@@ -124,13 +124,23 @@ body {
 }
 /* Welcome Section */
 .welcome-section {
-  background-color: #300f05;
-  padding: 60px 0;
+  background-color: #300f05; /* Warna latar belakang */
+  padding: 60px 0; /* Padding atas dan bawah */
 }
 
-.welcome-title {
-  font-size: 2.5rem;
-  font-weight: bold;
+.welcome-section .welcome-title {
+  font-size: 2.5rem; /* Ukuran font untuk judul */
+  font-weight: bold; /* Membuat judul menjadi tebal */
+  color: #000000; /* Mengubah warna judul menjadi hitam */
+  margin-bottom: 20px; /* Ruang di bawah judul */
+}
+
+.welcome-section p {
+  font-size: 1.1rem; /* Ukuran font untuk paragraf */
+  color: #000000; /* Mengubah warna paragraf menjadi hitam */
+  max-width: 700px; /* Membatasi lebar untuk keterbacaan yang lebih baik */
+  margin: 0 auto 20px auto; /* Memusatkan paragraf dengan margin di bawah */
+  line-height: 1.6; /* Jarak antar baris untuk keterbacaan */
 }
 
 .school-head-profile img {

@@ -25,7 +25,7 @@
 }
 
 .navbar-nav .nav-link:hover {
-  color: #ffdddd; /* Warna link saat di hover */
+  color: rgb(108, 71, 71); /* Warna link saat di hover */
 }
 
 .btn-primary {

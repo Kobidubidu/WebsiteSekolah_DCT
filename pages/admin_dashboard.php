@@ -16,6 +16,7 @@ if ($conn->connect_error) {
 }
 
 // Handle form submissions for adding, editing, and deleting users and admins
+// Handle form submissions for adding, editing, and deleting users and admins
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Adding a user
     if (isset($_POST['add_user'])) {
@@ -23,12 +24,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $email = $_POST['email'];
         $nisn = $_POST['nisn'];
 
+        // Find the smallest available ID
+        $result = $conn->query("SELECT MIN(id) AS min_id FROM users");
+        $min_id = $result->fetch_assoc()['min_id'];
+
+        // Check if the minimum ID is null (meaning there are no users)
+        if ($min_id === null) {
+            $new_id = 1; // If no users exist, start from 1
+        } else {
+            // Find the next available ID
+            $new_id = $min_id;
+            while ($conn->query("SELECT * FROM users WHERE id = $new_id")->num_rows > 0) {
+                $new_id++;
+            }
+        }
+
         // Prepare and bind
-        $stmt = $conn->prepare("INSERT INTO users (name, email, nisn) VALUES (?, ?, ?)");
-        $stmt->bind_param("sss", $name, $email, $nisn);
+        $stmt = $conn->prepare("INSERT INTO users (id, name, email, nisn) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("isss", $new_id, $name, $email, $nisn);
         $stmt->execute();
         $stmt->close();
     }
+
+    // (The rest of your code remains unchanged)
+}
 
     // Deleting a user
     if (isset($_POST['delete_user'])) {
@@ -53,18 +72,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->close();
     }
 
-    // Adding an admin
-    if (isset($_POST['add_admin'])) {
-        $admin_name = $_POST['admin_name'];
-        $admin_email = $_POST['admin_email'];
-        $pin_code = $_POST['pin_code'];
+   // Adding an admin
+if (isset($_POST['add_admin'])) {
+    $admin_name = $_POST['name'];
+    $admin_email = $_POST['email'];
+    $pin_code = $_POST['pin_code'];
 
-        // Prepare and bind
-        $stmt = $conn->prepare("INSERT INTO admin (name, email, pin_code) VALUES (?, ?, ?)");
-        $stmt->bind_param("sss", $admin_name, $admin_email, $pin_code);
-        $stmt->execute();
-        $stmt->close();
+    // Find the smallest available ID
+    $result = $conn->query("SELECT MIN(id) AS min_id FROM admin");
+    $min_id = $result->fetch_assoc()['min_id'];
+
+    // Check if the minimum ID is null (meaning there are no admins)
+    if ($min_id === null) {
+        $new_id = 1; // If no admins exist, start from 1
+    } else {
+        // Find the next available ID
+        $new_id = $min_id;
+        while ($conn->query("SELECT * FROM admin WHERE id = $new_id")->num_rows > 0) {
+            $new_id++;
+        }
     }
+
+    // Prepare and bind
+    $stmt = $conn->prepare("INSERT INTO admin (id, name, email, pin_code) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("isss", $new_id, $admin_name, $admin_email, $pin_code);
+    $stmt->execute();
+    $stmt->close();
+}
 
     // Deleting an admin
     if (isset($_POST['delete_admin'])) {
@@ -77,9 +111,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Editing an admin
     if (isset($_POST['edit_admin'])) {
-        $admin_id = $_POST['admin_id'];
-        $admin_name = $_POST['admin_name'];
-        $admin_email = $_POST['admin_email'];
+        $admin_id = $_POST['id'];
+        $admin_name = $_POST['name'];
+        $admin_email = $_POST['email'];
         $pin_code = $_POST['pin_code'];
 
         // Prepare and bind
@@ -88,7 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->execute();
         $stmt->close();
     }
-}
+
 
 // Fetch users for display
 $result_users = $conn->query("SELECT * FROM users");
@@ -217,12 +251,55 @@ $admins = $result_admins->fetch_all(MYSQLI_ASSOC);
                         <button type="submit" name="delete_user">Delete</button>
                     </form>
                     <form method="POST" style="display:inline;">
-                        <input type="hidden" name="user_id" value="<?php echo $user['id']; ?>">
-                        <button type="submit" name="edit_user">Edit</button>
-                    </form>
+    <input type="hidden" name="user_id" value="<?php echo $user['id']; ?>">
+    <input type="text" name="name" value="<?php echo $user['name']; ?>" required>
+    <input type="email" name="email" value="<?php echo $user['email']; ?>" required>
+    <input type="text" name="nisn" value="<?php echo $user['nisn']; ?>" required>
+    <button type="submit" name="edit_user">Edit</button>
+</form>
                 </td>
             </tr>
             <?php } ?>
+        </table>
+        <h2>Manager Admin</h2>
+        <form method="POST">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="text" name="pin_code" placeholder="Pin_Code" required>
+            <button type="submit" name="add_admin">Add Admin</button>
+        </form>
+        <h3>Admin List</h3>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Pin_Code</th>
+            </tr>
+            <?php
+            foreach ($admins as $admin) {
+            ?>
+            <tr>
+                <td><?php echo $admin['id']; ?></td>
+                <td><?php echo $admin['name'];?></td>
+                <td><?php echo $admin['email'];?></td>
+                <td><?php echo $admin['pin_code'];?></td>
+                <td>
+                    <form method="POST" style="display:inline;">
+                        <input type="hidden" name="admin_id" value="<?php echo $admin['id'];?>">
+                        <button type="submit" name="delete_admin">Delete</button>
+                    </form>
+                    <form method="POST" style="display:inline;">
+    <input type="hidden" name="id" value="<?php echo $admin['id']; ?>">
+    <input type="text" name="name" value="<?php echo $admin['name']; ?>" required>
+    <input type="email" name="email" value="<?php echo $admin['email']; ?>" required>
+    <input type="text" name="pin_code" value="<?php echo $admin['pin_code']; ?>" required>
+    <button type="submit" name="edit_admin">Edit</button>
+</form>
+            </tr>
+            <?php
+            }
+            ?>
         </table>
     </div>
 </body>

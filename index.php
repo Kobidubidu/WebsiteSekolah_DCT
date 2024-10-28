@@ -57,7 +57,7 @@ session_start();
     <section class="hero-section d-flex justify-content-center align-items-center">
         <div class="hero-content text-center">
             <h1>Berkarya Dan Berjaya Bersama DKV SMKN 3 Bandung</h1>
-            <p>Selamat datang di website jurusan DKV SMKN 3 Bandung</p>
+            <p class='text-white'>Selamat datang di website jurusan DKV SMKN 3 Bandung</p>
             <a href="#" class="btn btn-primary">Read More</a>
         </div>
     </section>
@@ -108,13 +108,13 @@ session_start();
     
     <!-- Welcome Section -->
 <section class="welcome-section text-center py-5" style="color: black;">
-    <div class="container">
-        <h2 class="welcome-title">Kepala Jurusan DKV</h2>
-        <p>Lorem ipsum dolor sit amet consectetur. Id nulla cras amet amet. Morbi convallis eu volutpat risus eget facilisis sodales enim.</p>
-        <p>Duis blandit amet ultricies quis non mattis vulputate. Ut interdum integer viverra nisl ullamcorper leo nisi tellus nisi.</p>
+    <div class="container text-black">
+        <h2 class="welcome-title text-black">Kepala Jurusan DKV</h2>
+        <p class='text-black'>Lorem ipsum dolor sit amet consectetur. Id nulla cras amet amet. Morbi convallis eu volutpat risus eget facilisis sodales enim.</p>
+        <p class='text-black'>Duis blandit amet ultricies quis non mattis vulputate. Ut interdum integer viverra nisl ullamcorper leo nisi tellus nisi.</p>
         <div class="school-head-profile mt-4">
             <img src="../WebsiteSekolah_DCT/assets/images/pak ismail.jpg" alt="Kepala Sekolah" class="rounded-circle">
-            <h4 class="mt-3">Mohamad Ismail</h4>
+            <h4 class="mt-3 text-black">Mohamad Ismail</h4>
         </div>
     </div>
 </section>
@@ -162,18 +162,18 @@ $gallery_items = getGalleryItems($conn);
 <section class="achievements-section py-5 text-center" style="color: black;">
     <div class="container">
         <h4 class="mb-4">Hasil perjuangan para siswa setelah kelulusan</h4>
-        <div class="row">
+        <div class="row text-black">
             <div class="col-lg-4 col-md-6 mb-4">
                 <h2>99</h2>
-                <p>Siswa Bekerja setelah kelulusan</p>
+                <p class='text-black'>Siswa Bekerja setelah kelulusan</p>
             </div>
             <div class="col-lg-4 col-md-6 mb-4">
                 <h2>99</h2>
-                <p>Siswa melanjutkan pendidikan tinggi</p>
+                <p class='text-black'>Siswa melanjutkan pendidikan tinggi</p>
             </div>
             <div class="col-lg-4 col-md-6 mb-4">
                 <h2>99</h2>
-                <p>Siswa Berwirausahawan</p>
+                <p class='text-black'>Siswa Berwirausahawan</p>
             </div>
         </div>
     </div>
@@ -183,14 +183,6 @@ $gallery_items = getGalleryItems($conn);
     <div class="container">
       <div class="row">
         <div class="col-md-4">
-          <h5>Organization</h5>
-          <ul>
-            <li><a href="#">Osis</a></li>
-            <li><a href="#">PMR</a></li>
-            <li><a href="#">MPK</a></li>
-          </ul>
-        </div>
-        <div class="col-md-4">
           <h5>FAQs</h5>
           <ul>
             <li><a href="#">Kelebihan dari Sekolah ini</a></li>
@@ -198,7 +190,7 @@ $gallery_items = getGalleryItems($conn);
             <li><a href="#">Jumlah Kerjasama dalam Pihak</a></li>
           </ul>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-2">
           <h5>Features</h5>
           <ul>
             <li><a href="#">Videography</a></li>

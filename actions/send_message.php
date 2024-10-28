@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../WebsiteSekolah_DCT/includes/db_connect.php'; // Pastikan Anda menyertakan koneksi database
+include '../includes/db_connect.php'; // Pastikan Anda menyertakan koneksi database
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST['name'];
@@ -14,14 +14,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_param("sss", $name, $email, $message);
 
         if ($stmt->execute()) {
-            echo "Pesan Anda telah dikirim!";
+            // Jika berhasil, alihkan ke halaman kontak dengan pesan sukses
+            header("Location: ../pages/contact.php?status=success");
+            exit(); // Pastikan untuk keluar setelah redirect
         } else {
-            echo "Terjadi kesalahan saat mengirim pesan.";
+            // Jika terjadi kesalahan saat menyimpan pesan
+            header("Location: ../pages/contact.php?status=error&message=Kesalahan saat mengirim pesan.");
+            exit();
         }
 
         $stmt->close();
     } else {
-        echo "Semua kolom harus diisi!";
+        // Jika ada kolom yang tidak diisi
+        header("Location: ../pages/contact.php?status=error&message=Semua kolom harus diisi!");
+        exit();
     }
 }
 
